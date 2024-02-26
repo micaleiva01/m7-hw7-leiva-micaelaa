@@ -81,6 +81,9 @@ main > section.hero {
   align-items: center;
   text-align: center;
   /* make this banner stick to the top! */
+  position: sticky;
+  top: 0;
+  z-index: 1;
 }
 
 section.hero > .call-to-action {
@@ -106,6 +109,10 @@ main article {
 main p {
   line-height: 1.75;
   margin-bottom: 48px;;
+}
+
+p:nth-child(2)::first-letter {
+  font-size: 6rem;
 }
 
 main > article img {
@@ -138,18 +145,35 @@ span.tooltip:hover,
 span.tooltip:focus {
   text-decoration: underline;
 }
-/* show tooltip on hover/focus */
+
+/* CSS to show tooltip bubble */
 span.tooltip:hover > span,
 span.tooltip:focus > span {
-  display: inline;
+  display: inline-block;
+  position: absolute;
+  background-color: black;
+  color: #fff;
+  font-size: 15px;
+  padding: 7px;
+  border-radius: 3px;
+  top: -125px;
+  left: 50%;
+  transform: translateX(-50%);
 }
+
 
 /* styling for tooltip bubble */
 span.tooltip span {
   display: none;
 }
 
-/* styling for tooltip bubble arrow */
+/* CSS for tooltip bubble arrow */
 span.tooltip span::after {
   content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  border-width: 5px;
+  border-top-color: var(--bubble-color);
+  transform: translateX(-50%);
 }
